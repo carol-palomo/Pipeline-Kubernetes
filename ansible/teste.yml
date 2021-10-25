@@ -1,4 +1,4 @@
-- hosts:
+- hosts: all
   tasks:
     - name: "Status kubeadm"
       shell: "kubeadm version"
