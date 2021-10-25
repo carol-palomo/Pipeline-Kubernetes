@@ -1,0 +1,7 @@
+- hosts:
+  tasks:
+    - name: "Status kubeadm"
+      shell: "kubeadm version"
+      register: ps
+    - debug:
+        msg: " '{{ ps.stdout_lines }}' "    
