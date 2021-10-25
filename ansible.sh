@@ -6,9 +6,8 @@ echo $ANSIBLE_OUT
 
 STATUS_K8S=$(echo $ANSIBLE_OUT | grep -oE "(kubeadm version.*?.*?)'")
 
-TESTE="command not found"
 
-if [[ $STATUS_K8S =~ $TESTE ]]
+if [[ -z $STATUS_K8S ]]
 then 
     echo "::::: kubernetes nao esta instalado :::::"
     exit 1
