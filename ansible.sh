@@ -4,3 +4,15 @@ ANSIBLE_OUT=$(ansible-playbook -i hosts teste.yml -u ubuntu --private-key /var/l
 
 echo $ANSIBLE_OUT
 
+STATUS_K8S=$(echo $ANSIBLE_OUT | grep -oE "(kubeadm version.*?.*?)'")
+
+TESTE="command not found"
+
+if [[ $STATUS_K8S =~ $TESTE ]]
+then 
+    echo "::::: kubernetes nao esta instalado :::::"
+    exit 1
+else
+    echo "::::: kubernetes instalado :::::"
+    exit 0
+fi
