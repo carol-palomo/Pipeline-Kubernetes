@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd terraform
+cd /var/lib/jenkins/workspace/pipeline-K8s/terraform
 terraform init
 terraform apply -auto-approve
 
@@ -13,10 +13,10 @@ echo $ID_M1_DNS
 echo "
 [ec2-k8s]
 $ID_M1_DNS
-" > ../ansible/hosts
+" > /var/lib/jenkins/workspace/pipeline-K8s/ansible/hosts
 
 echo  "Aguardando ..."
 sleep 15
 
-cd ansible
+cd /var/lib/jenkins/workspace/pipeline-K8s/ansible
 ansible-playbook -i hosts provisionar.yml -u ubuntu --private-key /var/lib/jenkins/.ssh/id_rsa
